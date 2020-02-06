@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteRotater : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Transform tf;//Variable for the transform
     public float turnSpeed = 1.0f;//Variable for the rotation of the object
@@ -29,7 +29,7 @@ public class SpriteRotater : MonoBehaviour
         {
             tf.Rotate(0, 0, turnSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))//Shooting bullet gameObject
         {
             Shoot();
         }
@@ -39,4 +39,27 @@ public class SpriteRotater : MonoBehaviour
     {
         throw new NotImplementedException();
     }
+    public void OnCollisionEnter2D(Collision2D gameObject)//Colliding with an object 
+    {
+        Debug.Log("Player became on collision with object");
+    }
+    public void OnCollisionExit2D(Collision2D gameObject)//Leaving the object collision
+    {
+        Debug.Log("The player left the collision");
+    }
+    //destroying player function
+    void  OnDestroy()
+    {
+        //Losing a life on destroy
+        GameManager.instance.lives -= 1;
+        if (GameManager.instance.lives > 0)
+        {
+            GameManager.instance.Respawn();
+        }
+        else
+        {//Display Game over
+            Debug.Log("Game Over");
+        }
+    }
+
 }
