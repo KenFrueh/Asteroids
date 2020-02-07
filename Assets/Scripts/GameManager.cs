@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         }
       
     }
-    public void Respawn()
+    public void Respawn()//Respawning the player
     {
         Instantiate(playerPrefab);
     }

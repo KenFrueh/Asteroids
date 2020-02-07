@@ -39,13 +39,20 @@ public class Player : MonoBehaviour
     {
         throw new NotImplementedException();
     }
-    public void OnCollisionEnter2D(Collision2D gameObject)//Colliding with an object 
+    public void OnCollisionEnter2D(Collision2D collision2D)//Colliding with an object 
     {
-        Debug.Log("Player became on collision with object");
+        if (true)
+        {//Killing player when colliding with enemy
+            Destroy(this.gameObject);
+        }
+        else //Does nothing
+        {
+
+        }
     }
     public void OnCollisionExit2D(Collision2D gameObject)//Leaving the object collision
     {
-        Debug.Log("The player left the collision");
+        Debug.Log("The player died, so left the collision");
     }
     //destroying player function
     void  OnDestroy()

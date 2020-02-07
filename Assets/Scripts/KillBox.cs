@@ -21,4 +21,5 @@ public class KillBox : MonoBehaviour
         Destroy(Other.gameObject);
         Debug.Log("Object has been destroyed");
     }
+
 }
