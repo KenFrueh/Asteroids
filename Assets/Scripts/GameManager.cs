@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{   //Manager when game start
+{       //Getting player
+    public GameObject playerPrefab;
+    public GameObject Player;
+    public GameObject parachutePrefab;
+    //Manager when game start
     public static GameManager instance;
     //Track score
     public int score = 0;
     public int lives = 3;
     //Track pause boolean
     public bool IsPaused = false;
-    //Getting player
-    public GameObject playerPrefab;
-    public GameObject Player;
+
+    //List of enemies in scene
+    public List<GameObject> enemiesList = new List<GameObject>();
     public void Awake()
     {
         if (instance == null)
@@ -26,8 +30,24 @@ public class GameManager : MonoBehaviour
         }
       
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {//Checking if key pressed
+            Debug.Log("Key has been pressed");
+            if (Player == null)
+            {
+               Respawn();
+            }
+        }
+    }
     public void Respawn()//Respawning the player
     {
-        Instantiate(playerPrefab);
+        Player = Instantiate(playerPrefab);
     }
 }
