@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int lives = 3;
     //Track pause boolean
     public bool IsPaused = false;
+    public GameObject[] enemyPrefab;
 
     //List of enemies in scene
     public List<GameObject> enemiesList = new List<GameObject>();
@@ -32,14 +33,13 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    {
+    {//Quiting application
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
-        }
+        }//Respawning player on key press
         if (Input.GetKeyDown(KeyCode.P))
-        {//Checking if key pressed
-            Debug.Log("Key has been pressed");
+        {
             if (Player == null)
             {
                Respawn();
