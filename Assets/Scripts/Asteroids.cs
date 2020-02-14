@@ -13,14 +13,14 @@ public class Asteroids : MonoBehaviour
         GameManager.instance.enemiesList.Add(this.gameObject);
         target = GameManager.instance.Player.transform;
         //Aim at the player at the start
-        rotateTowards(target, true);
+        RotateTowards(target, true);
     }
 
     // Update is called once per frame
     void Update()
     {
         //Always moving
-        moveFoward();
+        MoveFoward();
 
     }
     public void OnCollisionEnter2D(Collision2D otherObject)//Colliding with an object 
@@ -32,18 +32,17 @@ public class Asteroids : MonoBehaviour
         }
     }
     //Destroy the gameObject
-    void die()
+    void Die()
     {
         GameManager.instance.enemiesList.Remove(this.gameObject);
         Destroy(this.gameObject);
-        GameManager.instance.SpawnList.Add(this.gameObject);
     }
 
-    public void moveFoward()
+    public void MoveFoward()
     {
         transform.Translate(new Vector3(0, movementSpeed * Time.deltaTime, 0));
     }
-    protected void rotateTowards(Transform target, bool isInstant)
+    protected void RotateTowards(Transform target, bool isInstant)
     {
         Vector3 direction = target.position - transform.position;
         direction.Normalize();

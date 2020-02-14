@@ -13,25 +13,26 @@ public class EnemyShip : MonoBehaviour
         //Adding to enemy list
         GameManager.instance.enemiesList.Add(this.gameObject);
     }
+    //Updating movement
     void Update()
     {
-        moveFoward();
-        rotateTowards(target, false);
+        MoveFoward();
+        RotateTowards(target, false);
     }
-    public void die()
+    //Destroying gameObject
+    public void Die()
     {
         GameManager.instance.enemiesList.Remove(this.gameObject);
         Destroy(this.gameObject);
-        GameManager.instance.SpawnList.Add(this.gameObject);
     }
     //Always moving forward
-    public void moveFoward()
+    public void MoveFoward()
     {
         transform.Translate(new Vector3(0, movementSpeed * Time.deltaTime, 0));
     }
     // Adjust rotation every update with heatseeking behavior
-    protected void rotateTowards(Transform target, bool isInstant)
-    {
+    protected void RotateTowards(Transform target, bool isInstant)
+    {//Tracking position of player
         Vector3 direction = target.position - transform.position;
         direction.Normalize();
         float zAngle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90);
@@ -41,7 +42,7 @@ public class EnemyShip : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetLocation, turnSpeed * Time.deltaTime);
         }
         else
-        {
+        {//Editing rotation based on location
             transform.rotation = Quaternion.Euler(0, 0, zAngle);
         }
     }

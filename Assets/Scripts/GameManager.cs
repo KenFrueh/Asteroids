@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject Player;
     public GameObject parachutePrefab;
+    public GameObject EnemyPrefab;
     //Manager when game start
     public static GameManager instance;
     //Track score
@@ -15,10 +16,8 @@ public class GameManager : MonoBehaviour
     //Track pause boolean
     public bool IsPaused = false;
     public GameObject[] enemyPrefab;
-    public GameObject[] spawnPoint;
     //List of enemies in scene
     public List<GameObject> enemiesList = new List<GameObject>();
-    public List<GameObject> SpawnList = new List<GameObject>();
     public void Awake()
     {
         if (instance == null)
@@ -45,8 +44,9 @@ public class GameManager : MonoBehaviour
             //{
             // Respawn();
             //}
-            Instantiate(parachutePrefab);
+            //Instantiate(parachutePrefab);
         }
+
     }
     public void Respawn()//Respawning the player
     {
