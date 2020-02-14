@@ -15,9 +15,10 @@ public class GameManager : MonoBehaviour
     //Track pause boolean
     public bool IsPaused = false;
     public GameObject[] enemyPrefab;
-
+    public GameObject[] spawnPoint;
     //List of enemies in scene
     public List<GameObject> enemiesList = new List<GameObject>();
+    public List<GameObject> SpawnList = new List<GameObject>();
     public void Awake()
     {
         if (instance == null)
@@ -40,10 +41,11 @@ public class GameManager : MonoBehaviour
         }//Respawning player on key press
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (Player == null)
-            {
-               Respawn();
-            }
+            // if (Player == null)
+            //{
+            // Respawn();
+            //}
+            Instantiate(parachutePrefab);
         }
     }
     public void Respawn()//Respawning the player

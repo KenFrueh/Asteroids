@@ -43,11 +43,10 @@ public class Player : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D otherObject)//Colliding with an object 
     {
-        if (otherObject.gameObject == GameManager.instance.Player)
+        if (otherObject.gameObject.tag == "Enemy")
         {
             Destroy(otherObject.gameObject);
             Destroy(this.gameObject);
-
         }
     }
     public void OnCollisionExit2D(Collision2D otherObject)//Leaving the object collision

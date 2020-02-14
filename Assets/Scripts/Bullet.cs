@@ -18,4 +18,13 @@ public class Bullet : MonoBehaviour
         //Always move forward
         tf.position += tf.right * bulletSpeed * Time.deltaTime;
     }
+    public void OnCollisionEnter2D(Collision2D otherObject)//Colliding with an object 
+    {
+        if (otherObject.gameObject.tag == "Enemy")
+        {
+            Destroy(otherObject.gameObject);
+            Destroy(this.gameObject);
+            GameManager.instance.score += 1;
+        }
+    }
 }
