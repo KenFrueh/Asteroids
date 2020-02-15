@@ -9,9 +9,10 @@ public class Spawner : MonoBehaviour
     //Getting randon variables
     private int rand;
     private int randPosition;
+    public static Spawner instance;
     //Spawn between times
-    public float startTimeBtwSpawns;
-    public float timeBtwSpawns;
+    public float startTimeBtwSpawns = 2.0f;
+    public float timeBtwSpawns = 2.0f;
     // Start is called before the first frame update
     void Start()
     {//Spawning at start
@@ -32,5 +33,7 @@ public class Spawner : MonoBehaviour
         {
             timeBtwSpawns -= Time.deltaTime; 
         }
+
     }
+
 }

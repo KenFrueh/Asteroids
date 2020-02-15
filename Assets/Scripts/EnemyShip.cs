@@ -46,5 +46,4 @@ public class EnemyShip : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, zAngle);
         }
     }
-
 }

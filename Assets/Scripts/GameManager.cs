@@ -29,22 +29,24 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject); //Destroy Game manager attached to component
             Debug.LogError("Error: Tried to make second Game Manager");
         }
-      
+
+
     }
 
-    private void Update()
+    public void Update()
     {//Quiting application
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
-        }//Respawning player on key press
+        }
+        //Respawning player on key press
         if (Input.GetKeyDown(KeyCode.P))
         {
             // if (Player == null)
             //{
             // Respawn();
             //}
-            //Instantiate(parachutePrefab);
+            Instantiate(parachutePrefab);
         }
 
     }
@@ -52,4 +54,5 @@ public class GameManager : MonoBehaviour
     {
         Player = Instantiate(playerPrefab);
     }
+
 }
